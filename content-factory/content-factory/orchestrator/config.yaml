@@ -1,0 +1,19 @@
+# ===== LOCKED IN: 2026-07-21 — commit for 90 days =====
+
+niche: "AI tools that save or make money — for UK beginners"
+fallback_niche: "Personal finance for UK freelancers & side-hustlers (narrow angles only, e.g. tax mistakes, invoicing, pension basics)"
+# Fallback rule: Researcher uses fallback_niche when (a) no strong AI-tool topic
+# clears difficulty <=3 that day, or (b) Analyst flags 2+ consecutive weeks of
+# declining performance in the primary niche.
+
+audience: "25-45 year olds in the UK curious about AI but not technical; want practical wins, not hype"
+tone: "Friendly, direct, no jargon, mildly witty, honest about limitations"
+formats: "60s shorts (YouTube Shorts + TikTok) and one weekly 7-min long-form tutorial; blog post per long-form"
+pieces_per_run: 2
+milestone: "Phase 1: first £100/month (software affiliate links pay 20-40% recurring + early ads)"
+posting_time: "17:00 Europe/London"
+voice: "en-GB-RyanNeural"
+
+# Monetisation notes for Scriptwriter/Publisher:
+# - Prioritise tools with affiliate/referral programs; always disclose.
+# - The 2-3 week window after a new AI tool launches is the traffic sweet spot.

@@ -1,0 +1,36 @@
+name: Content Factory
+
+on:
+  schedule:
+    - cron: "0 7 * * *"      # daily 07:00 UTC — content batch
+    - cron: "0 8 * * 0"      # Sunday 08:00 UTC — weekly report
+  workflow_dispatch: {}       # manual "Run workflow" button
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install anthropic pyyaml
+      - name: Daily batch or weekly report
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ "$(date +%u)" = "7" ] && [ "$(date +%H)" = "08" ]; then
+            python orchestrator/run.py --weekly
+          else
+            python orchestrator/run.py
+          fi
+      - name: Commit drafts for approval
+        run: |
+          git config user.name "content-factory-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add content/ data/
+          git diff --cached --quiet || git commit -m "🏭 New drafts awaiting approval $(date +%F)"
+          git push
